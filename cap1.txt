@@ -1,0 +1,84 @@
+Name:
+lookatthat (as a currently existing domain)
+
+Goal:
+An app that aids parents in creating visual aids to teach their children about groups of things - from trees to trains, from plants to planets.
+
+Demographic:
+The envisioned user is more than likely a parent, but might also be a teacher in a classroom or tutoring setting.
+ 
+API:
+I plan to use Flick as a photo api because it seems to carry less baggage than a lot of stock photo sites.
+
+Schema:
+	Users Table:
+	user_id (Primary Key)
+	username
+	password_hash
+	
+Lists Table:
+	list_id (Primary Key)
+	user_id (Foreign Key referencing Users table)
+	name
+	description
+
+Pictures Table:
+	picture_id (Primary Key)
+	list_id (Foreign Key referencing Lists table)
+	name
+	description
+	flickr_photo_id (to store the identifier of the picture from Flickr)
+
+****
+User Flow:
+User Registration and Login
+User launches the app on their Windows laptop.
+If it's their first time using the app, they register 
+Then they login
+
+After logging in, the user goes to their dashboard:
+
+Creating a New List:
+User clicks on the "Create List" button.
+A form pops up where they enter the list's name and description. 
+
+Adding Pictures to a List:
+User selects a list from their dashboard to manage it.
+They click on the "Add Picture" button within the selected list.
+A search bar appears, allowing the user to enter a search term for the desired pictures.
+The app interacts with the Flickr API, the user ser browses through the search results 
+and selects a picture they want to add to the list.
+They provide a name and description for the selected picture.
+The picture is added to the list.
+
+Managing Lists and Pictures:
+User can view and edit the name and description of each list and picture in their app.
+They can delete a list, removing it from their dashboard.
+They can also add more pictures to a list or remove existing pictures as needed.
+
+Viewing Lists and Pictures:
+User can access any of their created lists from the dashboard.
+They can view the pictures within a list, along with their names and descriptions.
+Clicking on a picture might display a larger view or additional details about the picture.
+
+Logout and App Exit:
+When the user is finished using the app, they can log out to secure their session.
+They can exit the app by closing it or navigating away.
+****
+
+Beyond CRUD:
+There could be a favoriting mechanism, so that a child could look at just their favorite pictures 
+from all the lists in one place, for instance. 
+There could be a quiz mechanism for the learning process, beyond it just being a list. This could be 
+a case of the user typing in the word for them if they are too young, or a 'check' and 'x' box being 
+based on whether the child got it correct.
+There could be user profile customization. However, if any information beyond username/password is stored,
+especially if they have an avatar with a picture of themselves (or their children) it would need to be secure.
+There could be some gamification - accuracy tracking on the quizzes.
+There could be image slideshows.
+
+Stretch Goals:
+There could be multiple image sources (besides just Flickr - I chose Flickr initially after spending 
+some time searching pictures with GREP, there may be other image sites that work well in this scenario.)
+There could be a way to share lists between users.
+Perhaps some social media integration.
